@@ -151,7 +151,7 @@ int ExternalDataReader::split (ExternalDataTypes::TColumnList columnlist,
 	}
     }
 
-    columnlist[i] = '\0';
+    columnlist[i] = (ExternalDataTypes::PChar)'\0'; // cast: BUGFIX, VA, 2019
     return nr;
 }
 
