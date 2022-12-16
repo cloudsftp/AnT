@@ -97,7 +97,6 @@ AbstractBoundaryPolicy<DiffMethodType, aBoundaryType>::boundaryType
 /**
    Implements the CYCLIC BoundaryPolicy for both boundaries, MIN and
    MAX.  */
-template <>
 template <class DiffMethodType, const BoundaryEnum aBoundaryType>
 class BoundaryPolicy<DiffMethodType, aBoundaryType, CYCLIC>
   : public AbstractBoundaryPolicy<DiffMethodType, aBoundaryType>
@@ -146,7 +145,6 @@ public:
 /**
    Implements the FLUXLESS BoundaryPolicy for both boundaries, MIN and
    MAX.  */
-template <>
 template <class DiffMethodType, const BoundaryEnum aBoundaryType>
 class BoundaryPolicy<DiffMethodType, aBoundaryType, FLUXLESS>
   : public AbstractBoundaryPolicy<DiffMethodType, aBoundaryType>
@@ -168,7 +166,6 @@ public:
 // partial specialization of class 'BoundaryPolicy'
 /**
    Implements the INTERPOLATED BoundaryPolicy for the MIN boundary.  */
-template <>
 template <class DiffMethodType>
 class BoundaryPolicy<DiffMethodType, MIN, INTERPOLATED>
   : public AbstractBoundaryPolicy<DiffMethodType, MIN>
@@ -201,7 +198,6 @@ public:
 // partial specialization of class 'BoundaryPolicy'
 /**
    Implements the INTERPOLATED BoundaryPolicy for the MAX boundary.  */
-template <>
 template <class DiffMethodType>
 class BoundaryPolicy<DiffMethodType, MAX, INTERPOLATED>
   : public AbstractBoundaryPolicy<DiffMethodType, MAX>
@@ -236,7 +232,6 @@ public:
 /**
    Implements the INVALID BoundaryPolicy for both boundaries, MIN and
    MAX.  */
-template <>
 template <class DiffMethodType, const BoundaryEnum aBoundaryType>
 class BoundaryPolicy<DiffMethodType, aBoundaryType, INVALID>
   : public AbstractBoundaryPolicy<DiffMethodType, aBoundaryType>
@@ -265,7 +260,6 @@ public:
 /**
    Implements the CONSTANT BoundaryPolicy for both boundaries, MIN and
    MAX.  */
-template <>
 template <class DiffMethodType, const BoundaryEnum aBoundaryType>
 class BoundaryPolicy<DiffMethodType, aBoundaryType, CONSTANT>
   : public AbstractBoundaryPolicy<DiffMethodType, aBoundaryType>
