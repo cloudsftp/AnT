@@ -1,0 +1,174 @@
+\newif\ifCPPlistings  \CPPlistingsfalse
+
+\CPPlistingstrue
+
+\usepackage{verbatim}
+\usepackage{makeidx}
+%\usepackage[Lenny]{fncychap}
+\usepackage{fancybox}
+\usepackage[hang, bf, nooneline]{caption2}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{tabularx}
+\usepackage[ps2pdf]{hyperref}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyfoot{} % clean all
+\fancyfoot[LE,RO]{\thepage} % left on even pages and right on odd pages 
+\fancyfoot[LO,RE]{\tiny {\em date:} \today \\ {\em file:} {\tt \jobname.tex}} 
+
+\fancyhead{}
+%\fancyhead[LE,RO]{\chaptername \ \thechapter}
+
+%\fancyhead[LE,RO]{\chaptername \thechapter\\ : }
+%\fancyhead[LO,RE]{}
+%%%\renewcommand{\sectionmark}[1]{%
+%\markboth{\thesection #1}{}}
+
+%\fancyhead[LE]{\rightmark}
+%\fancyhead[RO]{\leftmark}
+
+
+\renewcommand{\chaptermark}[1]{%
+\markboth{\chaptername\ \thechapter\\
+#1}{}}
+\fancyhead[LE]{\leftmark}
+\fancyhead[RO]{\rightmark}
+
+\renewcommand{\footrulewidth}{0.2pt}
+\renewcommand{\headrulewidth}{0.2pt}
+\newcommand{\AnT}{{\tt AnT}}
+\newcommand{\subsubsubsection}[1]{\paragraph{\em #1}\quad\\[1em]}
+\newcommand{\subsubsubsubsection}[1]{\subparagraph{\em #1}\quad\\[1em]}
+\usepackage{float}
+\usepackage{color}
+\usepackage{psboxit}
+\newenvironment{example}%
+{\quad\\\begin{minipage}{\textwidth}\paragraph*{\em example}\quad\\[-1.5em]%
+\begin{boxitpara}{box 0.95 %setgray fill
+}\footnotesize }%
+{\end{boxitpara}
+\end{minipage}\\}
+
+\newenvironment{formatdescription}%
+{\quad\\\begin{minipage}{\textwidth}\paragraph*{\em }\quad\\ }%
+{ \end{minipage}\\}
+
+\newenvironment{format}%
+{\begin{boxitpara}{box 0.98 setgray fill}}%
+{\end{boxitpara}}
+
+\newenvironment{interface}%
+{\begin{boxitpara}{box 0.98 setgray fill}}%
+{\end{boxitpara}}
+
+\newenvironment{program}%
+{\begin{boxitpara}{box 0.98 setgray fill}\begin{verbatim}}%
+{\end{verbatim}\end{boxitpara}}
+
+
+\definecolor{darkblue}{rgb}{0.1,0.0,0.7}
+\definecolor{darkgray}{rgb}{0.5,0.5,0.5}
+\definecolor{darkgreen}{rgb}{0.1,0.5,0.0}
+
+\newcommand{\key}[1]{\textcolor{darkblue}{\tt #1}}
+
+\newcommand{\Key}[1]{\key{#1}\index{\key{#1}}}
+
+\newcommand{\ExtendedKey}[2]{\key{#1}\index{\key{#1}!{\em #2}}}
+
+\newcommand{\textString}[1]{{\tt "}\textcolor{darkgray}{\tt #1}{\tt "}}
+
+\newcommand{\TextString}[1]{\textString{#1}%
+\index{\textcolor{darkgray}{\tt #1}}}
+
+\newcommand{\fileName}[1]{\textcolor{darkgreen}{\tt #1}}
+\newcommand{\FileName}[1]{\fileName{#1}%
+\index{\textcolor{darkgreen}{\tt #1}}}
+
+\newcommand{\yes}{\textString{yes}}
+\newcommand{\no}{\textString{no}}
+
+\newcommand{\Real}{{\mathbb R}}
+\newcommand{\Complex}{{\mathbb C}}
+\newcommand{\Natural}{{\mathbb N}}
+
+\renewcommand{\vec}{\underline}
+
+\date{\today}
+\setlength{\parindent}{0mm}
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{3}
+\sloppy
+\makeindex
+
+\newcommand{\Release}{Release @ANT_SUB@.@ANT_REV@}
+\newcommand{\makeTitlePage}[1]{%
+\thispagestyle{empty}%
+\quad\\[8em]%
+\begin{center}%
+{\Huge \AnT\ @ANT_MAJOR@.@ANT_MINOR@}\\[1em]%
+
+{\Large \Release}\\[3em]%
+
+{\Huge #1\\[3em]%
+
+}%
+
+{\Large University of Stuttgart\\%
+Nonlinear Dynamics Group\\%
+\copyright @ANT_YEARS@\\%
+\vfill%
+\today%
+}
+\end{center}}
+
+\def\verbatimboxed#1{\begingroup
+  \def\verbatim@processline{%
+    {\setbox0=\hbox{\the\verbatim@line}%
+     \hsize=\wd0
+     \the\verbatim@line\par}}%
+  \setbox0=\vbox{\parskip=0pt\topsep=0pt\partopsep=0pt
+                 \verbatiminput{#1}}%
+  \begin{center}\fbox{\box0}\end{center}%
+ \endgroup}
+
+\newcommand{\cppinput}[1]{{\scriptsize%
+\textcolor{darkblue}{
+\ifCPPlistings
+\verbatimboxed{#1}
+\else
+\colorbox{yellow}{\textcolor{darkblue}
+{CPP input disabled}}
+\fi
+}}}
+
+
+\newcommand{\secref}[1]{\hyperref[#1]{Sec.~\ref{#1}}}
+\newcommand{\tableref}[1]{\hyperref[#1]{Table~\ref{#1}}}
+
+\hypersetup{    pdfauthor={Name, evtl. email-Adresse},
+                pdftitle={Titel der Arbeit},
+                pdfsubject={Dissertation, Datum, ...},
+                pdfproducer={wer hat das PDF-file erstellt},
+                linkcolor=green,        %% for links on same page
+                pagecolor=red,          %% for links to other pages
+                urlcolor=blue,          %% links to URLs
+                breaklinks=true,        %% allow links to break across lines!
+                colorlinks=false,       %% obviously inverted logic :-(
+                citebordercolor=0 0.5 0,        %% color for \cite
+                filebordercolor=0 0.5 0,
+                linkbordercolor=0.5 0 0,
+                menubordercolor=0.5 0 0,
+                pagebordercolor=0.5 0.5 0,
+                urlbordercolor=0 0.5 0.5,
+                pdfhighlight=/I,
+                pdfborder=0 0 0.5,      %% to show _really_ only a box
+                                        %% around the links and not a
+                                        %% filled recangle
+                backref=false,
+                pagebackref=false,
+                bookmarks=false,
+                bookmarksopen=false,
+                bookmarksnumbered=false}

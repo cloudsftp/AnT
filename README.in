@@ -1,0 +1,291 @@
+GENERAL INFORMATION
+===================
+
+This file is part of the AnT @ANT_MAJOR@.@ANT_MINOR@ software package.
+
+AnT @ANT_MAJOR@.@ANT_MINOR@ is an analysis tool for simulating and
+investigating dynamical systems, designed, implemented and maintained
+by the Nonlinear Dynamics group of the Institute of Parallel and
+Distributed Systems (IPVS) at the University of Stuttgart.
+
+Currently, the AnT @ANT_MAJOR@.@ANT_MINOR@ software package consists
+of two main parts: AnT and AnT-gui.
+
+AnT is the computation engine of the AnT @ANT_MAJOR@.@ANT_MINOR@
+software package, whereas AnT-gui is the GTK+ (see http://www.gtk.org)
+based graphical user interface to the AnT computation engine.
+
+With the AnT @ANT_MAJOR@.@ANT_MINOR@ software package, one can
+investigate several classes of dynamical systems such as ordinary and
+recurrent maps, ordinary, delayed and functional differential
+equations, coupled maps, coupled ordinary and delayed differential
+equations lattices and partial differential equations as well as
+stochastic and hybrid systems.
+
+Many investigation methods such as general trajectory evaluations,
+preparation of cobweb diagrams (graphical iteration), period and
+region analysis, spectral analysis, principal component decomposition,
+symbolic sequence analysis, symbolic image based analysis, box
+counting based analysis, calculation of the Lyapunov exponents and
+generalized Poincaré sections and a conditions checker are available.
+
+Further important features are:
+
+- The new equation parser, which makes the implementation of the
+  equations of motion corresponding to the considered dynamical system
+  in form of a C++ program obsolete. Currently the parser is available
+  only for maps and ODEs.
+
+- The OpenGL based visualization module
+
+- The client/server operation mode which allows the distribution of
+  time consuming computations among several nodes.
+
+
+COPYRIGHT
+=========
+
+Copyright (C)  @ANT_YEARS@ the AnT project,
+Department of Image Understanding,
+Institute of Parallel and Distributed Systems (IPVS),
+University of Stuttgart, Germany.
+
+AnT @ANT_MAJOR@.@ANT_MINOR@ is free software; it may be redistributed
+and/or modified under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 2 of the
+License, or (at your option) any later version.
+
+AnT @ANT_MAJOR@.@ANT_MINOR@ is distributed in the hope that it will be
+useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307,
+USA
+
+
+INSTALLATION for Unix (Solaris, Linux, FreeBSD) platforms
+============
+
+Please have a look at the generic installation instructions in the
+file INSTALL in this directory or use the following quick installation
+instructions below.
+
+To use all the features of the AnT @ANT_MAJOR@.@ANT_MINOR@ software package, please make
+sure that the following software packages are available on your
+system:
+
+Build:                    GNU g++ compiler
+                          libtool and make
+OpenGL support:           GL,GLU,glut or freeglut (libraries and headers)
+GTK+ developer version:   gtk+ 1.x or gtk+ 2.x (libraries and headers)
+Mathematical support:     fftw, clapack (libraries and headers)
+
+To install a minimal version of the AnT @ANT_MAJOR@.@ANT_MINOR@
+software package (without external libraries) the GNU g++ compiler
+together with the GNU make utility and libtool are required.
+
+These prerequisites are normally met, when using a standard Linux
+distribution such as SuSE, Red Hat or Debian. However, the required
+third party software is freely available under the GNU general public
+license on the corresponding web sites.
+
+For further information on this third party software please have a
+look at our web site:
+
+@ANT_HOMEPAGE@
+
+
+QUICK INSTALLATION
+==================
+
+
+Installation as root:
+---------------------
+
+        ./configure (default installation path is /usr/local)
+        or
+        ./configure --prefix=installation_path
+
+        make install
+
+
+Installation as user:
+---------------------
+
+        ./configure --prefix=installation_path
+        make install
+
+
+Running the configure script as mentioned above, the AnT
+@ANT_MAJOR@.@ANT_MINOR@ software package will be configured with all
+features supported by the AnT engine and which are available on your
+system. However, you can control specifically the configuration of
+some features using the following command line switches:
+
+        --enable-visualization=[yes|no]         default is yes
+        --enable-gui=[yes|no]                   default is yes
+
+        --with-fftw=[yes|no]                    default is yes
+        --with-lapack=[yes|no]                  default is yes
+
+For more information about the command line switches just type
+
+        ./configure --help
+
+
+After the successful installation it is required, that the following
+path
+
+        installation_path/bin
+
+(installation_path as given above) is included in your PATH
+environment variable.
+
+To prove whether the AnT computation engine is running correctly on
+your system please type
+
+        AnT --help or AnT -h or AnT -H
+
+You should see the following message:
+
+
+--//------------/-------------------------------
+ // AnT @ANT_MAJOR@.@ANT_MINOR@  / Release 4a, (c) @ANT_YEARS@
+//------------/---------------------------------
+
+usage: AnT <systemname> [{-i | -I | --initialization} <configfile>] [{-m | -M | --mode} <runmode>] [{-s | -S | --server} <server name>] [{-p | -P | --port} <portnumber>] [{-n | -N | --points} <scanpoints>] [{-t | -T | --time} <seconds>] [{-v | -V | --version}] [{-v | -V | --log}] [{-h | -H | --help}]
+
+<systemname>
+    complete path and filename (without extention)
+    of the shared library containing at least the system
+    function for the dynamical system to be simulated.
+
+Options:
+{-i | -I | --initialization} <initialization file>
+    complete path and filename of the initialization file
+{-m | -M | --mode} <runmode>
+    where runmode is one of 'standalone',
+    'server' or 'client'. Default is 'standalone'.
+{-s | -S | --server} <server name>
+    for runmodes 'server' and 'client' only.
+    Default is the standard hostname of the current system.
+{-p | -P | --port} <portnumber>
+    for runmodes 'server' and 'client' only.
+    The default port is 12345.
+{-n | -N | --points} <scanpoints>
+    for runmode 'client' only.
+    The number of scanpoints the client
+    should fetch from the server. Default is 50.
+{-t | -T | --time} <seconds>
+    for runmode 'client' only. The (approximate) number
+    of seconds the client should be busy before asking
+    for new scan points from the server.
+    This option overrides the '-n' option.
+{-v | -V | --version}
+{-l | -L | --log} write the log-file 'transitions.log'
+    which shows the internal structure of the current
+    simulator instantiation.
+{-h | -H | --help}
+
+
+To prove whether the graphical user interface AnT-gui is running
+correctly on your system please type
+
+        AnT-gui [system.ant]
+
+You should see the AnT-gui main window coming up. The initialization
+file 'system.ant' is optional, so you can start from scratch if you do
+not have such a file already.
+
+In order to work with the AnT @ANT_MAJOR@.@ANT_MINOR@ software
+package, it is strongly recommended, that you install also the
+AnT-demos package on your system. In this package, some well-known
+dynamical systems are collected. Each dynamical system is located in a
+separate directory containing the C++ source file and a Makefile for
+building the corresponding shared object (needed by AnT or AnT-gui).
+Furthermore in each demo subdirectory there is a further Makefile
+which runs the AnT computation engine and gnuplot successively to
+demonstrate the demos.
+
+
+Using third party libraries and/or programs with non standard locations:
+------------------------------------------------------------------------
+
+If you intend to employ third party software which can be used by the
+AnT computation engine - for instance the fftw package for fast
+fourier transforms (see http://www.fftw.org) or the clapack package
+for linear algebra support (see http://www.netlib.org/clapack) - you
+have to give the configure script additional information about the
+location of these libraries and corresponding header files, if they
+are not installed in standard directories where the configure script
+automatically searches for libraries and headers. This can be done by
+setting the environment variables INCLUDES and LDFLAGS to the install
+path of the headers and libraries before configuring the AnT
+@ANT_MAJOR@.@ANT_MINOR@ software package on your machine:
+
+
+        export INCLUDES="-Ipath1/include -Ipath2/include" (bash)
+        setenv INCLUDES "-Ipath1/include -Ipath2/include" (csh, tcsh)
+
+        export LDFLAGS="-Lpath1/lib -Lpath2/lib" (bash)
+        setenv LDFLAGS "-Lpath1/lib -Lpath2/lib" (csh, tcsh)
+
+Alternatively you can give the configure script two extra command line
+arguments:
+
+        INCLUDES="-Ipath1/include -Ipath2/include" LDFLAGS="-Lpath1/lib -Lpath2/lib"
+
+Hereby, path1 and path2 and so on point to the installation prefix
+directory where the third party libraries are installed in.
+
+For more information about the command line switches just type
+
+        ./configure --help
+
+Furthermore, you have to update the environment variable
+LD_LIBRARY_PATH so that it contains the paths to the external
+libraries.
+
+        export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:path1:path2 (bash)
+        setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:path1:path2 (csh, tcsh)
+
+
+INSTALLATION for Windows (98, NT, 2000, XP) platforms
+============
+
+Start the AnT_Setup.exe installation wizard and follow the
+instructions. This will install the AnT engine, the graphical user
+interface AnT-gui together with all required libraries and third party
+software (fftw) apart from the GTK+ Runtime Environment.
+
+Please notice: The GTK+ Runtime Environment is required when using the
+AnT @ANT_MAJOR@.@ANT_MINOR@ software package under Windows. It is possible to install
+the software only when GTK+ is available on your system.
+The GTK+ Runtime Environment is currently downloadable under
+
+        http://www.dropline.net/gtk
+
+To run the examples of the AnT-demos package a data visualization tool
+is necessary. Therefore, the GNUplot utility will be installed also on
+your system. To run the examples see the corresponding README.txt in the
+subdirectory demos.
+
+
+CONTACT
+=======
+
+AnT was mainly developed by:
+V. Avrutin, R. Lammert, M. Schanz and G. Wackenhut.
+
+For further information see:
+
+@ANT_HOMEPAGE@
+
+Please mail suggestions and bug reports to:
+
+@ANT_BUGREPORT@
+
+If you need any further assistance, please don't hesitate to contact us.

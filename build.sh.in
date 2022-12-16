@@ -1,0 +1,107 @@
+#! /bin/sh
+#
+#
+
+# Initialization
+BUILD_MODUS="$1"                         # extend flag; build all/bin or src only
+BUILD_FLAGS="$2"                         # flag for linking additionaly libraries
+RELEASE_NAME=@ANT_NAME@-@ANT_MAJOR@.@ANT_MINOR@-R@ANT_SUB@@ANT_REV@          # the name for archive
+BUILD_START_DIR=$PWD
+
+QUERY="$2"
+REPLACE="$3"
+
+replace_func ()
+{
+#    echo "This function is bugy. Please take follow:"
+#    echo "Example:find . -name '*' -exec perl -i.bak -pe 's/Copyright \\(C\\) 1999-2004 \
+#the AnT project/Copyright \\(C\\) 1999-2004 the AnT project/g' {} \;"
+    echo "try to replace $QUERY by $REPLACE with follow command:"
+    echo "find . -name '*' -exec perl -i.bak -pe "s/$QUERY/$REPLACE/g" {} \;"
+    find . -name '*' -exec perl -i.bak -pe "s/$QUERY/$REPLACE/g" {} \;
+}
+
+src_func ()
+{
+    echo "make source package..."
+    gmake dist
+}
+
+bin_func ()
+{
+    echo "make install temporary and build the package..."
+    gmake install
+    cp -f ./ChangeLog $BUILD_PATH/@ANT_NAME@/
+    cp -rf ./build/unix/* $BUILD_PATH/@ANT_NAME@/
+    rm -rf $BUILD_PATH/@ANT_NAME@/CVS
+    rm -f $RELEASE_NAME\_$OSTYPE.bin.tar.gz
+    cd $BUILD_PATH
+    tar -cvf $RELEASE_NAME\_$OSTYPE.bin.tar ./@ANT_NAME@/*
+    gzip $RELEASE_NAME\_$OSTYPE.bin.tar
+    mv $BUILD_PATH/$RELEASE_NAME\_$OSTYPE.bin.tar.gz $BUILD_START_DIR
+    cd $BUILD_START_DIR
+    rm -fr $BUILD_PATH
+}
+
+case $BUILD_MODUS in
+    all|src|bin)
+	;;
+    replace)
+	if [ "$QUERY" = "" ] || [ "$REPLACE" = "" ] ; then
+	    echo "usage: ./build.sh ( all | src | bin | \
+replace <guery> <replace> ) [\"LDFLAGS=-L/the_path INCLUDES=-I/the_path\"]"
+	exit 1
+	fi
+	;;
+    *)
+	    echo "usage: ./build.sh ( all | src | bin | \
+replace <guery> <replace> ) [\"LDFLAGS=-L/the_path INCLUDES=-I/the_path\"]"
+	exit 1
+	;;
+esac
+
+if [ -z "$BUILD_PATH" ] ; then
+    BUILD_PATH=$BUILD_START_DIR/$RELEASE_NAME
+fi
+
+#    if [ -e ./Makefile ]; then    # configure exist 
+#	echo "The source tree is not clean, make maintainer-clean..."
+#	gmake maintainer-clean
+#    fi
+#    if [ -x ./configure ]; then    # configure exist 
+#	echo "The source tree is not clean, make distclean..."
+#	gmake distclean
+#    fi
+
+if [ "$BUILD_MODUS" != "replace" ] ; then
+# begin of autogen.sh
+aclocalinclude="$ACLOCAL_FLAGS"
+aclocal $aclocalinclude
+autoheader
+automake -a
+autoconf
+# end of autogen.sh
+fi
+
+case $BUILD_MODUS in
+    all) 
+	./configure
+	gmake distclean
+	echo "./configure --prefix=$BUILD_PATH/@ANT_NAME@ $BUILD_FLAGS"
+	./configure --prefix=$BUILD_PATH/@ANT_NAME@ $BUILD_FLAGS
+	src_func
+	bin_func
+	;;
+    src) # build source package
+	./configure
+	src_func
+	;;
+    bin) # build binary package
+	gmake distclean
+	./configure --prefix=$BUILD_PATH/@ANT_NAME@ $BUILD_FLAGS
+	bin_func
+	;;
+    replace) # replace strings in source tree
+	replace_func
+	;;
+esac

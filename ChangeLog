@@ -1,0 +1,351 @@
+2009-01-27 Andreas W., Viktor, Michael<mail@ant4669.de>
+        * The new version of the graphical user interface AnT-gui
+          is now available
+
+2006-05-22 Robert, Georg, Michael, Viktor <mail@ant4669.de>
+        * Installation as non-admin on Windows 2000 is possible now
+          without error message
+        * On Windows platforms: individual or system-wide installation
+          is now possible
+        * AnT-demo/system directory now accessibla via mouse-click from
+          the startmenue
+        * READMEs in AnT-demo/systems added
+        * Improvement of the scripts: build-AnT-system.sh and
+          [g]make-AnT-system.sh
+        * Bug in EquationParser fixed
+
+2005-11-30 Viktor, Michael <mail@ant4669.de>
+        * Writer for the fourier coefficients improved.
+
+2005-11-23 Viktor, Michael <mail@ant4669.de>
+	* Bug in FourierCalculator.cpp fixed.
+        The Fourier coefficients were not correctly calculated.
+
+2005-11-21 Viktor <mail@ant4669.de>
+	* ConditionChecker.?pp User-defined conditions added.
+	
+2005-05-12 Viktor, Robert, Elmar, Michael <mail@ant4669.de>
+        * An equation parser for maps and ODEs is now implemented.
+        Using this parser the AnT software package is able to
+        investigate systems without a shared object file generated
+        from the corresponding C++-source code file.
+        Consequently, users without any programming experience
+        can now use the capabilities of the AnT software too.
+        * For CMLs a new investigation method is implemented.
+        This method calculates simple statistics based on the state of
+        a spatial inhomogeneous system.
+        * Improved windows support.
+        * Improved AnT-gui.
+        * Improved standard Makefile for compilation of user systems.
+
+2005-01-31 Viktor <mail@ant4669.de>
+        * PeriodCalculator.cpp: check for divergent orbits added.
+	Probably the implemented solution is not the most general one,
+	because similar checks should be added for other investigation
+	methods. However, the case Inf, Inf, ... will be never more
+	detected as a fixed point ;-) 
+
+	* RegionsCalculator.cpp: adapted, so that the regions with
+	divergent and with aperodical behavior are distinguished.
+	
+2004-12-02 Michael <mail@ant4669.de>
+        * DDE_Integratos.cpp: Gill's integration method implemented for DDEs.
+
+2004-11-12 Robert, Michael <mail@ant4669.de>
+	* gtk-gui: Bugs concerning the 'new' and 'quit' button fixed;
+	'Quit'-Button functionality improved.
+	* configure.ac: 'AC_FUNC_MALLOC'-check removed, due to problems 
+	on some systems with malloc.h.
+
+2004-09-27 Viktor <mail@ant4669.de>
+	* SymbolicEvaluator.cpp: Feature for the saving of periodic
+	sequences added: After the periodic sequence is saved, the period
+	is saved as well.
+
+2004-09-23 Viktor <mail@ant4669.de>
+	* SymbolicEvaluator.cpp: LR dynamic was not connected and could
+	not be used. Fixed and +/- tested. Seems to be usable.
+
+2004-09-14 Michael, Georg <mail@ant4669.de>
+        * The Release_3.1.9 : is downloadable now.
+	
+2004-09-01 Robert, Georg <mail@ant4669.de>
+	* MethodsPlugin.hpp, MethodsPlugin.cpp: Interface for user defined
+	methods implemented. Example available in source tree under:
+	'.../share' * IOStreamFactory.hpp, IOStreamFactory.cpp,
+	SemanticCheck.cpp: Timestamp for all generated files implemented
+	(in configuration files also).
+
+2004-08-13 Viktor <mail@ant4669.de>
+	* bug fixed in Period calculator: max period value was 
+	used not correct ('time < maxPeriod' instead of '<=')
+
+2004-07-28 Robert, Viktor, Georg <mail@ant4669.de>
+	* Poincare sections were broken... fixed!
+        * The Release_3.1.8 : is downloadable now.
+
+2004-07-13 Michael, Georg <mail@ant4669.de>
+        * The Release_3.1.7 : is downloadable now.
+
+2004-07-13 Robert, Michael <mail@ant4669.de>
+        * OpenGL visualization: hard exit problem
+          under Windows fixed
+        * initial value functions (sawtooth, etc.) for temporal
+          systems with delay corrected
+
+2004-06-17 Robert, Michael, Georg <mail@ant4669.de>
+        * The Release_3.1.6 : is downloadable now.
+
+2004-06-08 Robert <mail@ant4669.de>
+	* Bug fixed: Some cellular initial state resetters (singular,
+	  periodic step, ...) were incorrect (wrong indexing). Another bug
+	  concerning the 'roundTo'-template and leading to wrong rounded 
+	  values was eliminated also...
+
+2004-05-24 Robert, Georg <mail@ant4669.de>
+	* The Release_3.1.5 : is free.
+
+2004-05-21 Robert <mail@ant4669.de>
+	* missing: 'RandomVariableResetter' class added for temporal
+	initial functions support...
+
+2004-05-18 Robert, Viktor <mail@ant4669.de>
+	* Bug fixed: Lyapunov exponents were calculated wrong
+	for FDEs. Added 'adjacentOrbitsIterator(i)->reset()' after
+	each Gram-Schmidt application. It was necessary, because
+	the iterators for FDEs do save some intermediate states internally.
+
+	* Bug fixed: RKF456 for FDEs was buggy. Corrected.
+
+2004-05-18 Robert <mail@ant4669.de>
+	* notice: MinGW implementation now without segfault (XP misery
+	concerning file closing and global destructors noticed and avoided) 
+
+2004-05-17 Robert, Michael <mail@ant4669.de>
+	* lyapunov analysis: now we have one iterator/integrator for
+	each adjacent orbit (bug fixed)
+
+2004-05-17 Robert, Michael <mail@ant4669.de>
+	* some files:
+	gcc-3.4.0 compatibility reached and some bugs
+        ('DDE_Integrator', etc.) fixed.
+        HUGE_VAL replaced by DBL_MAX in 'symimages'.
+
+2004-05-04 Robert, Georg <mail@ant4669.de>
+	* some files:
+	Extra 'getopt' library removed. The functionality moved to
+	AnT-init.cpp.
+	Support for MinGW (and even sockets!) included.
+
+2004-04-29 Robert, Viktor <mail@ant4669.de>
+	* InitialStates.cpp, InitialStates.hpp: (Bug fixed)
+	Random initialization for spatial inhomogeneous system types
+	corrected (forgotten 'initialize ()' call added).
+
+2004-04-28 Robert, Viktor <mail@ant4669.de>
+	* InitialStates.cpp, InitialStates.hpp
+	* NoiseGenerator.cpp, SemanticCheck.cpp,
+	* SemanticCheck.hpp, GlobalKeys.cfg
+	Random initialization for spatial inhomogeneous  
+	system types was not really implemented. Redesigned and fixed.
+	
+2004-04-28 Robert, Viktor <mail@ant4669.de>
+	* DynSysData.cpp, InitialStates.cpp: (Bug fixed)
+	Output of initial states for spatial inhomogeneous  
+	system types was buggy. Fixed.
+
+2004-04-27 Robert, Viktor <mail@ant4669.de>
+	* CML_Proxy.cpp, CML_Proxy.hpp:
+	A non-standard (advanced) interface for CMLs added:
+	User has to set in the system function 
+	not only a single cell, but the whole cellular state.
+
+2004-04-27 Viktor <mail@ant4669.de> 
+	New saving policy for CMLs: User can set it to cell or state
+	oriented. Still to do: the same for PDEs and CODELs
+
+2004-04-20 NLD Group   <mail@ant4669.de>
+	* The Release_3.1.4 : is free.
+	
+2004-04-19 Robert: <mail@ant4669.de>
+	* GuiController.cpp, Configuration.cpp: (Bug fixed)
+
+2004-04-15 Robert, Michael   <mail@ant4669.de>
+	* NoiseGenerator.cpp, NoiseGenerator.hpp: (Bug fixed)
+	Thanks to Uwe Husmann who detected first, that the NoiseGenerators
+	didn't use the seed values correctly.
+
+2004-04-08 Viktor, Michael: <mail@ant4669.de>
+	* GlobalKeys.cfg, NoiseGenerator.cpp: (Bug fixed) 
+	Thanks to Uwe Husmann who detected first, that noisy variables
+	couldn't be used.
+
+2004-04-07 Viktor, Michael: <mail@ant4669.de>
+	* HybridODE_Integratore.cpp, HybridODE_Integrator.hpp: (Bug fixed)
+	Calculation of the velocity for hybrid ODEs corrected.
+	Note: This Bug for other types of hybrid systems is currently not fixed.
+
+2004-04-06 Michael: <mail@ant4669.de>
+	* ODE_Integrator.cpp, ODE_Integrator.hpp: Gill44 integration
+	method implemented for ODEs as stepper and Butcher array
+
+2004-03-30 NLD Group   <mail@ant4669.de>
+	* The Release_3.1.2 : is free.
+
+2004-04-07 Viktor, Michael: (Bug 'fixed'): Calculation
+	of the velocity for hybrid ODEs corrected. Note:
+	The similar problem for other types of hybrid systems remains
+	still.
+
+2004-04-06 Michael: Gill44 integration method implemented (as a stepper
+	and as a Butcher array)
+
+2004-04-06 Georg, Robert   <mail@ant4669.de>
+	* AnT-gui.cpp: path length increased.
+	Windows: A popup window occurs, when AnT-gui is finished.
+
+2004-03-30 NLD Group   <mail@ant4669.de>
+	* The Release_3a : is public.
+
+2004-03-28 Georg, Robert   <mail@ant4669.de>
+	* (a lot of files): Support for cygwin completed.
+
+2004-02-12 Georg Wackenhut   <mail@ant4669.de>
+	* configure.as: Support for build of dll's included.
+
+2003-06-13 Viktor, Claudia   <mail@ant4669.de>
+	* Orbit.hpp, DynSysData.*, TrajectorySaver.* and VelocityCalculator.cpp:
+	The output files initial_states.gra and orbit.gra can be 
+	plotted for all systems in system type specific formats.
+	The corresponding output routines moved to the data--objects,
+	therefore the Write(Current/Initial)State(s) routines are
+	simplified.
+
+2003-05-16 Viktor, Claudia   <mail@ant4669.de>
+	* AnT.cpp: default setting for the configuration file: if it is
+	not given using the -i option, then it will be assumed that the
+	ini-file has the same name as the shared object containing the
+	system function and it is located in the current directory from
+	where AnT is called.
+
+2003-05-15 Viktor, Claudia   <mail@ant4669.de>
+	* ranges in dimensions analysis are changed: former: 2 dim array: 
+	1st component contained all minimas, 2nd component all maximas,
+	now: n dimensional array (n is stateSpaceDim). Array contains now 
+	pairs of values which are (min, max) for each state variable.
+
+2003-03-15 AnT group   <mail@ant4669.de>
+	* The Release_2a : is free.
+
+2003-03-14  AnT group   <mail@ant4669.de>
+	* (a lot of files): Some bugs fixed. New system types supported:
+	one-dimensional PDEs and FDEs. Integrators for FDEs implemented.
+	Network support changed: external library libsocket++ is omitted. 
+
+2002-12-18  Felix Berger  <felixberger@beldesign.de>
+	* src/visualization/controlwin.cpp (addObjectsPanel): Fixed empty
+	AlphaBorder when there are no planes.
+
+2002-12-4 Viktor    <mail@ant4669.de>
+        * Poincare redesign: - completed. New type of sections - MinMaxPoints.
+
+2002-12-4 Viktor    <mail@ant4669.de>
+	* Poincare redesing: a lot of functions are moved to the
+	corresponding proxy, so that the inside simulator is now
+	protected. Due to the virtual reset routine in this proxy 
+	the Poincare initializer and resetter are now much more simpler
+
+2002-12-4 Robert, Viktor   <mail@ant4669.de>
+	* (a lot of files): deprecated header <strstream> replaced with
+	the standard header <sstream>. However, the g++ compiler with the
+	version number less 3.0 does not support this new header.  Here we
+	include the old header
+	(see src/engine/utils/GlobalConstants.hpp)
+
+2002-12-3  Viktor   <mail@ant4669.de>
+	* dd (a lot of files): Initial values calculation for Poincare
+	maps reviewd and corrected. For the parameter-dependent plane
+	the class planeResetter is removed and the reset will be now
+	performed by the more general initialized and resetters.
+
+2002-11-20  Felix Berger  <felixberger@beldesign.de>
+	* src/visualization/helpwindow.cpp (hideWin): Introduced
+	reinterpret_cast.
+
+2002-11-02  Felix Berger  <felixberger@beldesign.de>
+	* src/visualization/controlwin.cpp (addObjectsPanel): alpha for
+	planes is configurable in the gui.
+
+2002-11-01  Felix Berger  <felixberger@beldesign.de>
+	* src/utils/globals/GlobalKeys.cfg (VISUALIZATION): Added key:
+	PLANE_ALPHA_KEY.
+
+2002-10-31  Felix Berger  <felixberger@beldesign.de>
+	* src/visualization/controlwin.cpp (addPanelAppearence): Removed
+	global checkbox "objects visible".
+	* src/visualization/AVGraphicPrimitive.hpp (class
+	AVGraphicPrimitive): Restructuring.
+	* src/visualization/parse_control.cpp (createObjectCmds): Each
+	object can and should have a name which is displayed in the
+	visibility control panel. Otherwise its type name and a unique id
+	are used as its name.
+	* src/utils/globals/GlobalKeys.cfg (VISUALIZATION): Added key:
+	VISUALIZATION::WINDOW::OBJECT::VISIBILITY_KEY to control the
+	visibility of each object.
+	* src/visualization/controlwin.cpp (addCurveControlsToPanel): Show
+	projections only in 3d control panel.
+	(addObjectsPanel): A checkbox for each object to control its
+	visibility.
+
+2002-10-29  Felix Berger  <felixberger@beldesign.de>
+	* src/visualization/rendering.cpp (drawProjections): Use marker
+	from original curve.
+
+2002-10-25  Felix Berger  <felixberger@beldesign.de>
+	* src/visualization/rendering.cpp (drawProjections): Added marker
+	support.
+	* src/visualization/flying.cpp (computeFlyingParameter): Toggle
+	button text when flight is over.
+	* src/visualization/controlwin.cpp (addPanelDimensions): edittext
+	-> spinner.
+	* src/visualization/flying.cpp (toggleFlight): Added toggle which
+	does the job of startflyingCamera and stopflyingCamera and toggles
+	the name of the button. This causes a repaint in the control
+	panel, doesn't look so good.
+	* src/visualization/controlwin.cpp (addFlyControlPanel): Removed
+	stop button.
+
+2002-10-20  Felix Berger  <felixberger@beldesign.de>
+	* src/visualization/filter.cpp (setFile): printf on a null pointer
+	caused a segmentation fault on solaris.
+	* src/visualization/controlwin.cpp (initMainGlui): Added a dummy
+	window to circumvent the display bugs of the help window.
+	* src/visualization/helpwindow.hpp (THelpWindow): Inherits from
+	GLUI now.
+	* src/visualization/helpwindow.cpp (center): Added possibility to
+	center a help window.
+
+2002-10-19  Felix Berger  <felixberger@beldesign.de>
+	* src/visualization/helpwindow.cpp (addString): Alignment can be
+	specified as a parameter.
+
+2002-06-07  Felix Berger  <felixberger@beldesign.de>
+	* src/visualization/filter.cpp (filter_getc): Replaced semaphores
+	filterWait with mutex filter_wait.
+	* src/visualization/rendering.cpp: Replaced all occurences of
+	semaphores with respective mutexes.
+	* src/visualization/parse.cpp: Replaced semaphores filterWait and
+	parserStart with mutexes filter_wait and parser_start.
+	* src/visualization/visual.cpp (start_visual): Replaced semaphore
+	waitForOtherWork with mutex wait_for_other_work. Replace other
+	occurences of semaphores too.
+	* src/visualization/keyboard.cpp (toggleStartStop): Replaced
+	semaphore filterWait with mutex filter_wait.
+	* configure.ac: Added check for phtread library.
+
+2002-01-31  Georg Wackenhut   <mail@ant4669.de>
+	* configure.ac: Released for Autoconf 2.52.
+	From
+
+	Report from 
+	* Makefile.am: Updated for using with new configuration.

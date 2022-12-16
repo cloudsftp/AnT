@@ -1,0 +1,10 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: AnT @ANT_MAJOR@.@ANT_MINOR@
+Description: @ANT_DESCRIPTION@
+Version: @ANT_MAJOR@.@ANT_MINOR@-R@ANT_SUB@@ANT_REV@
+Libs: -L${libdir} -lAnT -lm
+Cflags: -I${includedir}

@@ -1,0 +1,2 @@
+piecewise-linear continuous 2D normal form,
+basins of attraction

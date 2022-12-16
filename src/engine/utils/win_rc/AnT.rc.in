@@ -1,0 +1,34 @@
+#include <windows.h>
+
+#define RES_FILE_SUB_TYPE 0
+#define RES_FILE_FLAGS_MASK 0
+#define RES_FILE_FLAGS 0
+
+AnT		ICON			"AnT.ico"
+
+VS_VERSION_INFO VERSIONINFO
+  FILEVERSION 0,@ANT_SUB@,@ANT_REV_NUMBER@,@ANT_PATCH@
+  PRODUCTVERSION 0,@ANT_SUB@,@ANT_REV_NUMBER@,@ANT_PATCH@
+  FILEFLAGSMASK RES_FILE_FLAGS_MASK
+  FILEFLAGS RES_FILE_FLAGS
+  FILEOS VOS__WINDOWS32
+  FILETYPE VFT_APP
+  FILESUBTYPE RES_FILE_SUB_TYPE
+  BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+      BLOCK "040904B0"
+      BEGIN
+	VALUE "CompanyName", "The AnT developer team (NLD Group on IPVS) at University of Stuttgart; @ANT_HOMEPAGE@\0"
+	VALUE "FileDescription", "@ANT_DESCRIPTION@\0"
+	VALUE "FileVersion", "AnT @ANT_MAJOR@.@ANT_MINOR@ Release @ANT_SUB@@ANT_REV@\0"
+	VALUE "InternalName", "AnT\0"
+	VALUE "LegalCopyright", "Copyright © @ANT_YEARS@ AnT\0"
+	VALUE "OriginalFilename", "AnT.exe\0"
+	VALUE "ProductName", "AnT @ANT_MAJOR@.@ANT_MINOR@\0"
+	VALUE "ProductVersion", "Release @ANT_SUB@@ANT_REV@\0"
+	VALUE "Bugreport", "Please send bug reports to: @ANT_BUGREPORT@\0"
+	VALUE "Comments", "Released under GNU GPL with additional permission; see source code and our homepage @ANT_HOMEPAGE@\0"
+      END
+    END
+  END

@@ -1,0 +1,85 @@
+##
+## AnT 4.669 Makefile for user-defined systems
+##
+
+.PHONY: clean \
+${ANT_SYSTEM_NAME}.system_name_check .system_name_check \
+${ANT_SHARED_LIB_EXT}.shared_lib_ext_check .shared_lib_ext_check \
+${ANT_INSTALLATION_PREFIX}.installation_prefix_check .installation_prefix_check
+
+
+
+CC = gcc
+CXX = g++
+
+
+
+all: \
+${ANT_SYSTEM_NAME}.system_name_check \
+${ANT_SHARED_LIB_EXT}.shared_lib_ext_check \
+${ANT_INSTALLATION_PREFIX}.installation_prefix_check \
+${ANT_SYSTEM_NAME}.${ANT_SHARED_LIB_EXT}
+	@echo Available AnT system function plugin: ${ANT_SYSTEM_NAME}.${ANT_SHARED_LIB_EXT}
+
+
+
+${ANT_SYSTEM_NAME}.system_name_check:
+# Nothing to do, just provide a (phony) target if ANT_SYSTEM_NAME not empty
+
+.system_name_check:
+	@echo "ERROR: missing ANT_SYSTEM_NAME=... option!" > /dev/stderr
+	@exit 1
+
+
+
+${ANT_SHARED_LIB_EXT}.shared_lib_ext_check:
+# Nothing to do, just provide a (phony) target if ANT_SHARED_LIB_EXT not empty
+
+.shared_lib_ext_check:
+	@echo "ERROR: missing ANT_SHARED_LIB_EXT=... option!" > /dev/stderr
+	@exit 1
+
+
+
+${ANT_INSTALLATION_PREFIX}.installation_prefix_check:
+# Nothing to do, just provide a (phony) target if ANT_INSTALLATION_PREFIX not empty
+
+.installation_prefix_check:
+	@echo "ERROR: missing ANT_INSTALLATION_PREFIX=... option!" > /dev/stderr
+	@exit 1
+
+
+
+${ANT_SYSTEM_NAME}.o: ${ANT_SYSTEM_NAME}.cpp
+	@echo "Compiling ${ANT_SYSTEM_NAME}.cpp ..."
+	@if [ "x${ANT_SHARED_LIB_EXT}" = "xdll" ] ; then \
+	${CXX} -mno-cygwin ${CXXFLAGS} ${CPPFLAGS} ${INCLUDES} \
+	-I"${ANT_INSTALLATION_PREFIX}"/include/AnT/engine \
+	-c ${ANT_SYSTEM_NAME}.cpp ; \
+	else \
+	${CXX} -fPIC ${CXXFLAGS} ${CPPFLAGS} ${INCLUDES} \
+	-I"${ANT_INSTALLATION_PREFIX}"/include/AnT/engine \
+	-c ${ANT_SYSTEM_NAME}.cpp ; \
+	fi
+
+
+
+${ANT_SYSTEM_NAME}.${ANT_SHARED_LIB_EXT}: ${ANT_SYSTEM_NAME}.o
+	@echo "Building shared library ${ANT_SYSTEM_NAME}.${ANT_SHARED_LIB_EXT} ..."
+	@if [ "x${ANT_SHARED_LIB_EXT}" = "xdll" ] ; then \
+	   ${CXX} -shared -mno-cygwin ${LDFLAGS} \
+	   -o ${ANT_SYSTEM_NAME}.${ANT_SHARED_LIB_EXT} \
+	   ${ANT_SYSTEM_NAME}.o -L"${ANT_INSTALLATION_PREFIX}"/bin -lAnT ; \
+	else \
+	   ${CXX} -shared ${LDFLAGS} \
+           -o ${ANT_SYSTEM_NAME}.${ANT_SHARED_LIB_EXT} ${ANT_SYSTEM_NAME}.o ; \
+	fi
+
+
+
+clean: \
+${ANT_SYSTEM_NAME}.system_name_check \
+${ANT_SHARED_LIB_EXT}.shared_lib_ext_check
+	-rm -f ${ANT_SYSTEM_NAME}.o
+	-rm -f ${ANT_SYSTEM_NAME}.${ANT_SHARED_LIB_EXT}
+

@@ -1,0 +1,2 @@
+piecewise-linear map (sigma/delta modulator model)
+regions of several periodic behavior
