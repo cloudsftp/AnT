@@ -1,0 +1,15 @@
+Makefile
+libtool
+build.sh
+*.tar.gz
+AnT.pc
+*.log
+*.status
+compile
+*~
+*-h1
+*.cache
+.deps
+*.rc
+*.cfg
+*.tex
