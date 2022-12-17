@@ -451,7 +451,7 @@ string getVersionString ()
        + ", Release " 
        + toString(ANT_SUB) 
        + toString(ANT_REV);
-  if (ANT_PATCH > 0) {
+  if (!toString(ANT_PATCH).compare("0")) { // .compare and "0" instead of 0: COMPFIX, Fabian Weik, 2022
     result = result + ", Patch " + toString(ANT_PATCH);
   }
 
