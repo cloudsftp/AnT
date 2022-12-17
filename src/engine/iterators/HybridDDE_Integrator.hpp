@@ -33,12 +33,12 @@
 #include "DDE_Integrator.hpp"
 #include "proxies/HybridDDE_Proxy.hpp"
 
-using std::auto_ptr;
+using std::unique_ptr;
 
 class HybridDDE_Integrator : public HybridPartIterator
 {
 private:
-  auto_ptr<DDE_Integrator> ddeIntegrator;
+  unique_ptr<DDE_Integrator> ddeIntegrator;
 
 public:
   virtual void execute (IterData& iterData)

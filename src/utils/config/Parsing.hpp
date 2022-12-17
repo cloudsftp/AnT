@@ -39,7 +39,7 @@ using std::endl;
 #include <vector>
 using std::vector;
 
-#include <memory> /* std::auto_ptr */
+#include <memory> /* std::unique_ptr */
 
 #include "../utils/debug/Error.hpp"
 #include "../utils/arrays/Array.hpp"
@@ -96,7 +96,7 @@ public:
 
 
 typedef
-KeyIndexedTree::LeafNode<std::auto_ptr<AbstractEntity> >
+KeyIndexedTree::LeafNode<std::unique_ptr<AbstractEntity> >
 ParsedEntityNode;
 
 
@@ -136,7 +136,7 @@ const EntityType* getEntity (const KeyIndexedTree::Node* aNode)
 namespace KeyIndexedTree {
 template<>
 // static
-void LeafNode<std::auto_ptr<AbstractEntity> >::
+void LeafNode<std::unique_ptr<AbstractEntity> >::
 assignmentPrintPolicy (const ParsedEntityNode& aNode, ostream& out);
 }
 

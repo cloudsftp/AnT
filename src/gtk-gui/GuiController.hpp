@@ -365,7 +365,7 @@ public:
   getDimensionsFunc (const AbstractConfigurator* aConfigurator)
   {
     static
-      std::auto_ptr<map<const string, dim_func_t*> >
+      std::unique_ptr<map<const string, dim_func_t*> >
       functions (NULL);
 
     map<const string, dim_func_t*>* funcMap
@@ -413,7 +413,7 @@ public:
 			const Node* aSpecNode )
   {
     static
-      std::auto_ptr<map<const string, creation_cond_func_t*> >
+      std::unique_ptr<map<const string, creation_cond_func_t*> >
       functions (NULL);
 
     map<const string, creation_cond_func_t*>* funcMap
@@ -465,7 +465,7 @@ public:
   getUpdateFunc (const AbstractConfigurator* aConfigurator)
   {
     static
-      std::auto_ptr<map<const string, update_func_t*> >
+      std::unique_ptr<map<const string, update_func_t*> >
       functions (NULL);
 
     map<const string, update_func_t*>* funcMap
@@ -507,7 +507,7 @@ public:
   getSavingFunc (const AbstractConfigurator* aConfigurator)
   {
     static
-      std::auto_ptr<map<const string, saving_func_t*> >
+      std::unique_ptr<map<const string, saving_func_t*> >
       functions (NULL);
 
     map<const string, saving_func_t*>* funcMap
@@ -625,7 +625,7 @@ public:
 				 const Node* aSpecNode )
   {
     static
-      std::auto_ptr<map<const string, custom_creation_func_t*> >
+      std::unique_ptr<map<const string, custom_creation_func_t*> >
       functions (NULL);
 
     map<const string, custom_creation_func_t*>* funcMap

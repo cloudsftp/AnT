@@ -32,7 +32,7 @@
 #include "ODE_Integrator.hpp"
 #include "proxies/HybridODE_Proxy.hpp"
 
-using std::auto_ptr;
+using std::unique_ptr;
 
 /**
  * Integrator for hybrid ODEs. All existing cub-classes of the 
@@ -50,7 +50,7 @@ private:
    * autopointer to some sub-class of the ODE_Integrator,
    * will be allocated in the 'get'-routine.
    */
-  auto_ptr<ODE_Integrator> odeIntegrator;
+  unique_ptr<ODE_Integrator> odeIntegrator;
 
 public:
   virtual void execute (IterData& iterData);

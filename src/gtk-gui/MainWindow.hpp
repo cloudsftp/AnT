@@ -36,8 +36,8 @@
 class MainWindow
 {
 public:
-  std::auto_ptr<RootConfigurator> mainWindowConfigurator;
-  std::auto_ptr<RootConfigurator> runConfigurator;
+  std::unique_ptr<RootConfigurator> mainWindowConfigurator;
+  std::unique_ptr<RootConfigurator> runConfigurator;
 
   GtkWidget* const window;
 
